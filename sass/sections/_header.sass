@@ -1,0 +1,156 @@
+$header-height: 8rem
+$header-height--small: 6rem
+
+.header
+  position: fixed
+  left: 0
+  top:  0
+  z-index: 99
+  width: 100%
+  background-color: white
+  // < 576px
+  +xs
+    border-bottom: .1rem solid $button-background-color
+  &-wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: $header-height
+    // < 576px
+    +xs
+      height: $header-height--small
+  &-block
+    font-size: 1.8rem
+    &:not(&--logo)
+      text-align: right
+      // < 992px
+      +md
+        display: none
+    &--logo
+      text-align: center
+      // < 576px
+      +xs
+        display: none
+    &__title
+      display: block
+      margin: 0 0 .3rem
+      font-size: 1em
+      +bold
+      text-transform: uppercase
+      letter-spacing: 0.54px
+    &__subtitle
+      +light
+      font-size: .8em
+      color: #6b6b6b
+  &-btn
+    display: flex
+    &:hover,
+    &:focus
+      background-color: darken($button-background-color, 5)
+    // < 576px
+    +md
+      font-size: 1.6rem
+      padding: 1rem
+      &:hover &__icon,
+      &:focus &__icon,
+        fill: white
+      &__icon
+        display: inline-block
+      span
+        display: none
+    &__icon
+      width:  2rem
+      height: 2rem
+      display: none
+      fill: $button-background-color
+      transition: .3s ease
+
+$menu-btn-color: $button-background-color
+$menu-btn-w: 2rem
+$menu-btn-h: 0.2rem
+.menu-btn
+  position: relative
+  width:  7rem
+  height: 100%
+  background-color: transparent
+  padding: 0 2.5rem
+  border: none
+  border-left:  .1rem solid #eee7f8
+  border-right: .1rem solid #eee7f8
+  color: $menu-btn-color
+  cursor: pointer
+  // < 576px
+  +xs
+    width: 4rem
+  span,
+  span:before,
+  span:after
+    position: absolute
+    left: 50%
+    margin-left: -($menu-btn-w / 2)
+    width:  $menu-btn-w
+    height: $menu-btn-h
+    background-color: currentColor
+  span
+    &:before,
+    &:after
+      content: ''
+      transition: .3s cubic-bezier(.75,-0.5,0,1.75)
+    &:before
+      transform: translateY(-$menu-btn-h - .4rem)
+    &:after
+      transform: translateY($menu-btn-h + .4rem)
+  &.active
+    span
+      background: transparent
+      &:before
+        transform: rotate(225deg)
+      &:after
+        transform: rotate(-225deg)
+
+.nav
+  position: fixed
+  z-index: 98
+  left: 0
+  top:  $header-height
+  width: 100%
+  padding: 1.6rem 0
+  background: $menu-btn-color
+  transform: translateY(-100%)
+  transition: transform .3s ease
+  +xs
+    top: $header-height--small
+  &--active,
+  /* :focus-within polyfill for ie11 */
+  &.ally-focus-within
+    transform: translateY(0%)
+  &-wrap
+    list-style: none
+    padding: 0
+    margin: 0
+    display: flex
+    justify-content: space-between
+    align-items: center
+    // < 992px
+    +md
+      flex-direction: column
+      .nav__item
+        font-size: 1.9rem
+        margin: .5rem 0
+  &__item
+    margin-right: 3rem
+    +light
+    font-size: 1.7rem
+    color: white
+    line-height: 2.5rem
+    text-transform: uppercase
+    // < 1200px
+    +lg
+      font-size: 1.5rem
+      margin-right: 1rem
+    &:last-child
+      margin-right: 0
+    a
+      padding: .5rem
+      &:focus
+        outline-color: white

@@ -1,0 +1,97 @@
+.feedback
+  padding-bottom: 27rem
+  +md
+    padding-bottom: 4rem
+  &-wrap
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    +md
+      padding: 0 .5rem
+  &-item
+    flex-basis: (100% / 3) - 1%
+    display: flex
+    flex-direction: column
+    max-width: 100%
+    font-size: 1.6rem
+    text-align: center
+
+    &__text
+      position: relative
+      background-color: white
+      border-radius: 1rem
+      box-shadow: 0 .8rem 1rem rgba(0, 0, 0, 0.1)
+      padding: 2.2rem 1.9rem
+      margin: 0
+      +light
+      text-align: left
+
+      // Стрелка вниз
+      &::after
+        content: ''
+        display: block
+        position: absolute
+        left: 50%
+        top:  100%
+        transform: translate(-50%, -.7rem)
+        border:     1.5rem solid transparent
+        border-top: 2rem solid white
+    
+    &__avatar
+      display: block
+      margin: 3rem auto 2rem
+      max-width:  7rem
+      max-height: 7rem
+      border: .2rem solid #7ba2e7
+      border-radius: 50%
+    
+    &__name
+      +bold
+      font-size: 1.1em
+      font-style: normal
+
+    &__city
+      margin-top: .3rem
+      font-size: .9em
+      font-style: italic
+
+.owl-stage
+  display: flex !important
+  align-items: flex-end
+
+// в common.sass
+.owl-prev,
+.owl-next
+  position: absolute
+  z-index: 2
+  top: 50%
+  background: transparent
+  transform: translateY(-50%)
+  border: none
+  padding: 0
+  height: 100%
+  width: 4.5rem
+  font-size: 0
+  cursor: pointer
+  &::before
+    content: ''
+    display: block
+    width:  3rem
+    height: 3rem
+    background-color: transparent
+    border-left: .3rem solid #7ba2e7
+    border-top:  .3rem solid #7ba2e7
+    margin-left: 1.3rem
+    transform: rotate(-45deg)
+.owl-next::before
+    transform: rotate(135deg)
+    margin-left: 0
+.owl-prev
+  left: 0
+.owl-next
+  right: 0
++md
+  .owl-prev
+    left: -1.8rem
+  .owl-next
+    right: -1.8rem
